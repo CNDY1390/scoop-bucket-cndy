@@ -1,0 +1,47 @@
+{
+    "version": "1.2.3",
+    "description": "Pencil.dev - AI-powered infinite canvas design tool",
+    "homepage": "https://www.pencil.dev",
+    "license": "Proprietary",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.pencil.dev/download/Pencil-win-x64.exe",
+            "hash": "f5514f88e39dba1ca2fcfdf2a15771426b337e19a532ab271d1f33d3277da7ee"
+        }
+    },
+    "pre_install": "",
+    "installer": {
+        "script": ""
+    },
+    "post_install": [
+        "",
+        ""
+    ],
+    "uninstaller": {
+        "script": ""
+    },
+    "bin": "Pencil.exe",
+    "shortcuts": [
+        ["Pencil.exe", "Pencil.dev"]
+    ],
+    "env_add_path": [
+        "",
+        ""
+    ],
+    "persist": [
+        "",
+        ""
+    ],
+    "checkver": {
+        "url": "https://www.pencil.dev/downloads",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.pencil.dev/download/Pencil-win-x64.exe"
+            }
+        }
+    }
+}

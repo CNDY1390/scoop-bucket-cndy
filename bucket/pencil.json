@@ -1,5 +1,5 @@
 {
-    "version": "1.2.3",
+    "version": "7",
     "description": "Pencil.dev - AI-powered infinite canvas design tool",
     "homepage": "https://www.pencil.dev",
     "license": "Proprietary",
@@ -23,7 +23,10 @@
     },
     "bin": "Pencil.exe",
     "shortcuts": [
-        ["Pencil.exe", "Pencil.dev"]
+        [
+            "Pencil.exe",
+            "Pencil.dev"
+        ]
     ],
     "env_add_path": [
         "",

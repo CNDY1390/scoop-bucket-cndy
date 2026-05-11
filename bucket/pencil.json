@@ -1,5 +1,5 @@
 {
-    "version": "2.",
+    "version": "4",
     "description": "Pencil.dev - AI-powered infinite canvas design tool",
     "homepage": "https://www.pencil.dev",
     "license": "Proprietary",
@@ -7,7 +7,7 @@
     "architecture": {
         "64bit": {
             "url": "https://www.pencil.dev/download/Pencil-win-x64.exe",
-            "hash": "f1b998188a1b734a529614b7a0b99d4ab6ba9d6b9f1fcb544cd2aeb6c8de0dae"
+            "hash": "3c76aaff9ff681b63f70cf82db641a7da857660dca09f0cd9a24d6458fcebef2"
         }
     },
     "pre_install": "",

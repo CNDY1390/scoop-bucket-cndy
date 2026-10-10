@@ -15,7 +15,9 @@ $hook += '& {'
 $hook += [IO.File]::ReadAllLines((Join-Path $PSScriptRoot 'patch-hotkey.ps1'))
 $hook += '} "$dir\app\webcontent\js-worker\worker_temperate.js"'
 $manifest | Add-Member -MemberType NoteProperty -Name post_install -Value $hook -Force
-$content = ($manifest | ConvertTo-Json -Depth 30) + "`n"
+if (!$env:SCOOP_HOME) { $env:SCOOP_HOME = Convert-Path (scoop prefix scoop) }
+. "$env:SCOOP_HOME/lib/json.ps1"
+$content = (($manifest | ConvertToPrettyJson) -replace "`t", '    ') + [Environment]::NewLine
 if ((Test-Path -LiteralPath $ManifestPath) -and [IO.File]::ReadAllText($ManifestPath) -eq $content) { return }
 [IO.File]::WriteAllText([IO.Path]::GetFullPath($ManifestPath), $content, (New-Object Text.UTF8Encoding $false))
 Write-Host "Synced Feishu $($manifest.version) from Extras-CN with the local hotkey patch."

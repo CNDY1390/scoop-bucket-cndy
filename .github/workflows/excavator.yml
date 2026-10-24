@@ -4,12 +4,28 @@ on:
     # run every 4 hours
     - cron: '20 */4 * * *'
 name: Excavator
+permissions:
+  contents: write
 jobs:
   excavate:
     name: Excavate
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Sync Feishu from Extras-CN
+        shell: pwsh
+        run: |
+          ./scripts/feishu/sync-manifest.ps1 'https://raw.githubusercontent.com/Scoopforge/Extras-CN/master/bucket/feishu.json' './bucket/feishu.json'
+          git add bucket/feishu.json
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 1) {
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'feishu: sync Extras-CN release'
+            if ($LASTEXITCODE -ne 0) { throw 'Feishu manifest commit failed' }
+            git push
+            if ($LASTEXITCODE -ne 0) { throw 'Feishu manifest push failed' }
+          } elseif ($LASTEXITCODE -ne 0) {
+            throw 'Feishu manifest diff failed'
+          }
       - name: Excavate
         uses: ScoopInstaller/GithubActions@main
         env:
